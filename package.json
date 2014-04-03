@@ -1,0 +1,27 @@
+{
+  "name": "example-runner",
+  "version": "0.0.0",
+  "description": "Runner for example files, usually tests.",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/runner.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/square/example-runner"
+  },
+  "keywords": [
+    "example",
+    "test"
+  ],
+  "author": "Square, Inc.",
+  "license": "Apache 2",
+  "bugs": {
+    "url": "https://github.com/square/example-runner/issues"
+  },
+  "homepage": "https://github.com/square/example-runner",
+  "devDependencies": {}
+}
