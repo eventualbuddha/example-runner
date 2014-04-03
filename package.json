@@ -1,6 +1,6 @@
 {
   "name": "example-runner",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Runner for example files, usually tests.",
   "main": "lib/index.js",
   "directories": {
