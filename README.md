@@ -18,7 +18,7 @@ you'll probably want to use `runCLI` which prints to stdout and exits with the
 appropriate status code. If you need to customize the output or exit behavior
 of example-runner, such as to fit it into another tool, you can use `run`.
 
-### runCLI(files, transform)
+### runCLI(files, options)
 
 With no arguments, `runCLI` will run `test/examples/*.js`.
 
@@ -32,19 +32,30 @@ You can run specific files if you want:
 require('example-runner').runCLI(['a.js', 'b.js']);
 ```
 
-Provide a transform if you want to modify your examples before running, such as
-with [sweet.js][sweet.js]:
+Provide the `transform` optino if you want to modify your examples before
+running, such as with [sweet.js][sweet.js]:
 
 ```js
-require('example-runner').runCLI(function(source) {
-  return sweetjs.compile(source);
+require('example-runner').runCLI({
+  transform: function(source) {
+    return sweetjs.compile(source);
+  }
 });
 ```
 
-### run(files, transform)
+If you need to pass data to your example files, use the `context` option (note
+that `assert` is already provided as part of the default context):
 
-Like `runCLI()`, `run()` takes files and an optional transform function. Unlike
-`runCLI()` it returns an `EventEmitter` that emits three events:
+```js
+require('example-runner').runCLI({
+  context: { mydata: [1, 2], mylib: require('mylib') }
+});
+```
+
+### run(files, options)
+
+Like `runCLI()`, `run()` takes files and options. Unlike `runCLI()` it returns
+an `EventEmitter` that emits three events:
 
 * `pass(testName)`: called when an example file passes
 * `fail(testName, error)`: called when an example file fails, along with the

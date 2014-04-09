@@ -1,1 +1,1 @@
-require('../lib').runCLI();
+require('../lib').runCLI({ context: { customContextVariable: {} } });
