@@ -63,7 +63,10 @@ require('example-runner').runCLI({
 
  Note that there are some default context properties:
 
-* **assert**: This is the node assert library.
+* **assert**: This is the node assert library. At least one assertion must be
+  made for an example file to be considered successful. You can disable this
+  behavior by adding `/* example-runner assert:false */` at the top of your
+  example file.
 * **__options**: This is the same options object passed to `transform` (see
   above).
 
