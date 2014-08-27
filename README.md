@@ -32,25 +32,40 @@ You can run specific files if you want:
 require('example-runner').runCLI(['a.js', 'b.js']);
 ```
 
-Provide the `transform` optino if you want to modify your examples before
+Provide the `transform` option if you want to modify your examples before
 running, such as with [sweet.js][sweet.js]:
 
 ```js
 require('example-runner').runCLI({
-  transform: function(source) {
+  transform: function(source, testName, filename, options) {
     return sweetjs.compile(source);
   }
 });
 ```
 
-If you need to pass data to your example files, use the `context` option (note
-that `assert` is already provided as part of the default context):
+The arguments given to `transform` are:
+
+* **source**: A string with the source of the example file.
+* **testName**: The base name of the example file, sans `.js` suffix.
+* **filename**: The path to the example file.
+* **options**: Options parsed from comments in the source of the example file.
+  This is useful if how you transform the source is different per file and you
+  need a way to configure it. For example, `/* config a:b, log:true */` in the
+  source file will create options like so: `{ config: { a: "b", log: true } }`.
+
+If you need to pass data to your example files, use the `context` option.
 
 ```js
 require('example-runner').runCLI({
   context: { mydata: [1, 2], mylib: require('mylib') }
 });
 ```
+
+ Note that there are some default context properties:
+
+* **assert**: This is the node assert library.
+* **__options**: This is the same options object passed to `transform` (see
+  above).
 
 ### run(files, options)
 
