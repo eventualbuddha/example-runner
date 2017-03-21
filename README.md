@@ -1,5 +1,7 @@
 # example-runner
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/eventualbuddha/example-runner.svg)](https://greenkeeper.io/)
+
 Run example files with assertions. example-runner can be used as a very basic
 test runner, optionally with a source transform function. This makes it
 suitable for testing JavaScript-to-JavaScript compilers such as
